@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/jmh_petani_0.js"></script>
+        <script src="data/file_SHP_Kulonprogo_1.js"></script>
+        <script src="data/jmh_panen_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-8.1810859156,109.660426358],[-7.60532092085,110.57312953]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        function pop_jmh_petani_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROVINSI'] !== null ? Autolinker.link(String(feature.properties['PROVINSI'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KECAMATAN</th>\
+                        <td>' + (feature.properties['KECAMATAN'] !== null ? Autolinker.link(String(feature.properties['KECAMATAN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KODE_KEC'] !== null ? Autolinker.link(String(feature.properties['KODE_KEC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KODE_KAB'] !== null ? Autolinker.link(String(feature.properties['KODE_KAB'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_LENG'] !== null ? Autolinker.link(String(feature.properties['SHAPE_LENG'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KODE_PROP'] !== null ? Autolinker.link(String(feature.properties['KODE_PROP'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KABUPATEN'] !== null ? Autolinker.link(String(feature.properties['KABUPATEN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_LE_1'] !== null ? Autolinker.link(String(feature.properties['SHAPE_LE_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_AREA'] !== null ? Autolinker.link(String(feature.properties['SHAPE_AREA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">JMH_PETANI</th>\
+                        <td>' + (feature.properties['JMH_PETANI'] !== null ? Autolinker.link(String(feature.properties['JMH_PETANI'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_jmh_petani_0_0(feature) {
+            switch(String(feature.properties['JMH_PETANI'])) {
+                case '126':
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(174,41,240,1.0)',
+            }
+                    break;
+                case '133':
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(21,70,204,1.0)',
+            }
+                    break;
+                case '136':
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,138,62,1.0)',
+            }
+                    break;
+                case '150':
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,130,175,1.0)',
+            }
+                    break;
+                case '151':
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(233,97,89,1.0)',
+            }
+                    break;
+                case '156':
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(125,206,18,1.0)',
+            }
+                    break;
+                case '160':
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(84,185,224,1.0)',
+            }
+                    break;
+                case '166':
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(21,205,172,1.0)',
+            }
+                    break;
+                case '169':
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(129,215,120,1.0)',
+            }
+                    break;
+                case '197':
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,233,117,1.0)',
+            }
+                    break;
+                case '204':
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(137,117,215,1.0)',
+            }
+                    break;
+                case '220':
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(34,213,100,1.0)',
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_jmh_petani_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,51,191,1.0)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_jmh_petani_0');
+        map.getPane('pane_jmh_petani_0').style.zIndex = 400;
+        map.getPane('pane_jmh_petani_0').style['mix-blend-mode'] = 'normal';
+        var layer_jmh_petani_0 = new L.geoJson(json_jmh_petani_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_jmh_petani_0',
+            onEachFeature: pop_jmh_petani_0,
+            style: style_jmh_petani_0_0,
+        });
+        bounds_group.addLayer(layer_jmh_petani_0);
+        map.addLayer(layer_jmh_petani_0);
+        function pop_file_SHP_Kulonprogo_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROVINSI'] !== null ? Autolinker.link(String(feature.properties['PROVINSI'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KECAMATAN</th>\
+                        <td>' + (feature.properties['KECAMATAN'] !== null ? Autolinker.link(String(feature.properties['KECAMATAN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KODE_KEC'] !== null ? Autolinker.link(String(feature.properties['KODE_KEC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KODE_KAB'] !== null ? Autolinker.link(String(feature.properties['KODE_KAB'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_LENG'] !== null ? Autolinker.link(String(feature.properties['SHAPE_LENG'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KODE_PROP'] !== null ? Autolinker.link(String(feature.properties['KODE_PROP'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KABUPATEN'] !== null ? Autolinker.link(String(feature.properties['KABUPATEN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_LE_1'] !== null ? Autolinker.link(String(feature.properties['SHAPE_LE_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_AREA'] !== null ? Autolinker.link(String(feature.properties['SHAPE_AREA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['JMH_PETANI'] !== null ? Autolinker.link(String(feature.properties['JMH_PETANI'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_file_SHP_Kulonprogo_1_0(feature) {
+            switch(String(feature.properties['KECAMATAN'])) {
+                case 'Galur':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(233,223,21,1.0)',
+            }
+                    break;
+                case 'Girimarto':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(145,212,116,1.0)',
+            }
+                    break;
+                case 'Girimulyo':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(238,188,118,1.0)',
+            }
+                    break;
+                case 'Girisubo':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(169,43,222,1.0)',
+            }
+                    break;
+                case 'Kalibawang':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(104,109,215,1.0)',
+            }
+                    break;
+                case 'Kokap':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(223,122,97,1.0)',
+            }
+                    break;
+                case 'Leksono':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(29,207,109,1.0)',
+            }
+                    break;
+                case 'Lendah':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,220,50,1.0)',
+            }
+                    break;
+                case 'Nanggulan':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(12,202,167,1.0)',
+            }
+                    break;
+                case 'Panjatan':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(73,220,83,1.0)',
+            }
+                    break;
+                case 'Pengasih':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,129,177,1.0)',
+            }
+                    break;
+                case 'Samigaluh':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(162,132,221,1.0)',
+            }
+                    break;
+                case 'Sentolo':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(111,201,226,1.0)',
+            }
+                    break;
+                case 'Temon':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,111,222,1.0)',
+            }
+                    break;
+                case 'Wates':
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(220,70,95,1.0)',
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_file_SHP_Kulonprogo_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,161,213,1.0)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_file_SHP_Kulonprogo_1');
+        map.getPane('pane_file_SHP_Kulonprogo_1').style.zIndex = 401;
+        map.getPane('pane_file_SHP_Kulonprogo_1').style['mix-blend-mode'] = 'normal';
+        var layer_file_SHP_Kulonprogo_1 = new L.geoJson(json_file_SHP_Kulonprogo_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_file_SHP_Kulonprogo_1',
+            onEachFeature: pop_file_SHP_Kulonprogo_1,
+            style: style_file_SHP_Kulonprogo_1_0,
+        });
+        bounds_group.addLayer(layer_file_SHP_Kulonprogo_1);
+        map.addLayer(layer_file_SHP_Kulonprogo_1);
+        function pop_jmh_panen_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROVINSI'] !== null ? Autolinker.link(String(feature.properties['PROVINSI'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>KECAMATAN</strong><br />' + (feature.properties['KECAMATAN'] !== null ? Autolinker.link(String(feature.properties['KECAMATAN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KODE_KEC'] !== null ? Autolinker.link(String(feature.properties['KODE_KEC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KODE_KAB'] !== null ? Autolinker.link(String(feature.properties['KODE_KAB'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_LENG'] !== null ? Autolinker.link(String(feature.properties['SHAPE_LENG'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KODE_PROP'] !== null ? Autolinker.link(String(feature.properties['KODE_PROP'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KABUPATEN'] !== null ? Autolinker.link(String(feature.properties['KABUPATEN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_LE_1'] !== null ? Autolinker.link(String(feature.properties['SHAPE_LE_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_AREA'] !== null ? Autolinker.link(String(feature.properties['SHAPE_AREA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">JMH_PETANI</th>\
+                        <td>' + (feature.properties['JMH_PETANI'] !== null ? Autolinker.link(String(feature.properties['JMH_PETANI'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">JMH_PANEN</th>\
+                        <td>' + (feature.properties['JMH_PANEN'] !== null ? Autolinker.link(String(feature.properties['JMH_PANEN'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_jmh_panen_2_0(feature) {
+            switch(String(feature.properties['JMH_PANEN'])) {
+                case '918':
+                    return {
+                pane: 'pane_jmh_panen_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(90,214,210,1.0)',
+            }
+                    break;
+                case '1081':
+                    return {
+                pane: 'pane_jmh_panen_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(121,181,230,1.0)',
+            }
+                    break;
+                case '1151':
+                    return {
+                pane: 'pane_jmh_panen_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(231,138,236,1.0)',
+            }
+                    break;
+                case '1197':
+                    return {
+                pane: 'pane_jmh_panen_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,118,122,1.0)',
+            }
+                    break;
+                case '1363':
+                    return {
+                pane: 'pane_jmh_panen_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,203,161,1.0)',
+            }
+                    break;
+                case '1595':
+                    return {
+                pane: 'pane_jmh_panen_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(162,236,77,1.0)',
+            }
+                    break;
+                case '1685':
+                    return {
+                pane: 'pane_jmh_panen_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(211,117,169,1.0)',
+            }
+                    break;
+                case '1959':
+                    return {
+                pane: 'pane_jmh_panen_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(72,79,209,1.0)',
+            }
+                    break;
+                case '1980':
+                    return {
+                pane: 'pane_jmh_panen_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,212,112,1.0)',
+            }
+                    break;
+                case '2240':
+                    return {
+                pane: 'pane_jmh_panen_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(121,228,117,1.0)',
+            }
+                    break;
+                case '2644':
+                    return {
+                pane: 'pane_jmh_panen_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(158,113,212,1.0)',
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_jmh_panen_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(238,184,137,1.0)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_jmh_panen_2');
+        map.getPane('pane_jmh_panen_2').style.zIndex = 402;
+        map.getPane('pane_jmh_panen_2').style['mix-blend-mode'] = 'normal';
+        var layer_jmh_panen_2 = new L.geoJson(json_jmh_panen_2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_jmh_panen_2',
+            onEachFeature: pop_jmh_panen_2,
+            style: style_jmh_panen_2_0,
+        });
+        bounds_group.addLayer(layer_jmh_panen_2);
+        map.addLayer(layer_jmh_panen_2);
+        setBounds();
+        var i = 0;
+        layer_jmh_petani_0.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['JMH_PETANI'] !== null?String('<div style="color: #000000; font-size: 8pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['JMH_PETANI']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_jmh_petani_0'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_file_SHP_Kulonprogo_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['KECAMATAN'] !== null?String('<div style="color: #000000; font-size: 8pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['KECAMATAN']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_file_SHP_Kulonprogo_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_jmhpetani_0,layer_fileSHPKulonprogo_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_jmhpetani_0,layer_fileSHPKulonprogo_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_jmhpetani_0,layer_fileSHPKulonprogo_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_jmhpetani_0,layer_fileSHPKulonprogo_1]);
+        });
+        </script>
+    </body>
+</html>
